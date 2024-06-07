@@ -1,0 +1,63 @@
+# Copyright (C) 2019 Admin <marcello.gribaudo@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleAgendarecureventsName'
+ModuleAgendarecureventsName = Agenda eventos recurrentes
+# Module description 'ModuleAgendarecureventsDesc'
+ModuleAgendarecureventsDesc = Eventos recurrentes en la agenda.
+
+#
+# Admin page
+#
+AgendarecureventsSetup = Configuración para Agenda eventos recurrentes
+Settings = Configuración
+AgendarecureventsSetupPage = Página de configuración para Agenda eventos recurrentes
+
+
+#
+# About page
+#
+About = Acerca de 
+AgendarecureventsAbout = Acerca de Agenda eventos recurrentes
+AgendarecureventsAboutPage = Página acerca de Agenda eventos recurrentes 
+
+#
+# Other
+#
+Agendarecurevents = Eventos recurrentes en la agenda
+RecurrentEvent = Eventos recurrentes
+Frequency=Frecuencia
+Daily = Diario
+Weekly = Semanal
+Monthly = Mensual
+Yearly = Anual
+ExcludedDays=Días excluidos
+ReperatEvent=Repetir el evento
+Each=Cada
+UntilDate=Hasta la fecha
+Times=veces
+weeks=semana
+months=meses
+years=años
+TimesNotValid=El valor del campo "veces" no es válido
+DateNotValid=El valor del campo "Hasta la fecha" no es válido
+NewEventCreatedAt=Creado el nuevo evento en
+Clone=Clon
+NoDateTypeFound=No se encontró el tipo de frecuencia
+ErrorInEventGeneration=Error al generar evento

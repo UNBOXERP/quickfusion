@@ -1,0 +1,58 @@
+# Copyright (C) 2021 Alan Montoya UBE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleReturnStockName'
+ModuleReturnStockName = ReturnStock
+# Module description 'ModuleReturnStockDesc'
+ModuleReturnStockDesc = Return stock on customer and vendor credit notes
+
+#
+# Admin page
+#
+ReturnStockSetup = ReturnStock setup
+Settings = Settings
+ReturnStockSetupPage = ReturnStock setup page
+RETURNSTOCK_MYPARAM1 = Option 1
+RETURNSTOCK_MYPARAM1Tooltip = My param 1 tooltip
+RETURNSTOCK_MYPARAM2= Option 2
+RETURNSTOCK_MYPARAM2Tooltip=My param 2 tooltip
+
+
+RETURNSTOCK_MYPARAM3 = Return stock on customer credit notes
+RETURNSTOCK_MYPARAM3Tooltip =Return stock on customer credit notes
+RETURNSTOCK_MYPARAM4 = Return stock on vendor credit notes
+RETURNSTOCK_MYPARAM4Tooltip = Return stock on vendor credit notes
+
+#
+# About page
+#
+About = About
+ReturnStockAbout = About ReturnStock
+ReturnStockAboutPage = ReturnStock about page
+
+#
+# Sample page
+#
+MyPageName = My page name
+
+#
+# Sample widget
+#
+MyWidget = My widget
+MyWidgetDescription = My widget description

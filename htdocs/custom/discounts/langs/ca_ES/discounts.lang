@@ -1,0 +1,49 @@
+# Dolibarr language file - ca_ES - Discounts
+CHARSET = UTF-8
+Module400027Name=Promocions
+Module400027Desc=Gestiona promocions
+Permission4000271=Llegir promocions
+Permission4000272=Crear promocions
+PDFDiscountDescription=Model PDF que mostra les promocions
+DocModelDiscountDescription=Model PDF que mostra les promocions
+DiscountsSetup=Configuració promocions
+ShowOptions=Opcions
+RulesToApply=En cas que hi haja conflicte entre algunes promocions, s'aplicaran...
+Both=Ambdós
+Commercial=Comercial
+Time=Temporal
+NewDiscount=Nova promoció
+DiscountType=Tipus promoció
+dtocom=Promoció
+type_dto1=Comercial
+type_dto2=Financiero
+type_dto3=Temporal
+type_dto4= Compres X Pagues Y
+type_dto5=Dte. segnoa unitat
+InPromo=En promoció
+Pay=Pagues
+ByPriority=Per prioritat
+GroupLinesSameProduct=Agrupar totes les línies amb el mateix producte/servei en una única línia
+OptionGroupLines=Agrupar línies
+OptionNoGroupLines=No agrupar línies
+
+DeleteDiscountLine=Eliminar descompte
+ConfirmDeleteDiscountLine=Està segur de voler eliminar aquest descompte?
+DiscountDeleted=Descompte eliminat correctament
+
+#Errors
+ErrDiscountValue=El valor del descompte és incorrecte
+ErrDescription=Hi ha que indicar una descripció
+ErrType=No ha seleccionat cap tipus de descompte
+ErrDiscountCommercialAlreadyExists=La suma dels descomptes comercials excedeix de 100
+ErrDiscountAlreadyExists=El tipus de descompte %s ja existeix, si us plau edite l'existent
+
+#About
+AboutInfo=Aquest mòdul ha estat desenvolupat i distribuït per 2byte.es Soluciones Informáticas, <a href="http://www.2byte.es"> www.2byte.es </a> (Preferred Partner de Dolibarr)
+MoreModules=Altres mòduls desenvolupats per 2byte.es estan disponibles a la seva botiga oficial
+MoreModulesLink=<a target="_blank" href="https://shop.2byte.es/">Prem per accedir a la botiga</a>
+ModulesHelp=Tens disponibles manuals i vídeos dels nostres mòduls externs <a target="_blank" href="https://liveagent.2byte.es/853598-M%C3%B3dulos-Oficiales-Externos-Dolibarr">ací</a>
+
+Discounts=Descomptes
+UpdateDiscount=Modificar descompte
+DiscountsApplied=Descomptes aplicats

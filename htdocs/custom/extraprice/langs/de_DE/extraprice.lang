@@ -1,0 +1,48 @@
+# Dolibarr language file - de_DE - extraprice
+CHARSET=UTF-8
+
+##ADMIN
+NothingToSetup=Aktivieren Sie das Modul, um auf die Konfigurationsseite zuzugreifen
+GeneralSetup=Allgemeine Einstellungen
+GeneralSetting=Allgemeine Einstellungen
+PatasTools=Patas-M-Werkzeuge
+PatasToolsNews=Hier finden Sie die Informationen von patas-monkey.com (erfordert eine Internetverbindung).
+PatasMonkeyPresent=Dieses Modul ist eine Erstellung des Patas-Monkey, eine Dokumentation davon ist auf unserer Website verfügbar
+MoreModulesLink=Sie können alle unsere Entwicklungen auf Dolistore finden
+SettingIsOnToolsMenu=Das Modul benötigt keine bestimmte Konfiguration.<br/> Seine Funktionen sind im Hauptmenü 'Tools Patas-M' zugänglich.
+BackToModuleList=Zurück zur Moduleliste
+NewVersionAviable=Eine neue Version des Moduls ist verfügbar
+NumberVersion=Ausführung
+MonthVersion=Monat der Veröffentlichung
+ChangesVersion=Hauptänderungen vorgenommen
+
+##ABOUT
+About=Über
+Slogan=Entwicklung, Unterstützung und Schulung für Doliibarr
+LienModules=Unsere Module
+LienServices=Unsere Dienstleistungen
+LienDoc=Unsere Dokumentation
+LienDolistore=Finden Sie unsere anderen Module
+Changelog=Moduländerung
+SupportModuleInformation=Technische Informationen
+SupportModuleInformationDesc=Diese Informationen sind nützlich und können gefragt werden, ob Sie einen Fehler im Betrieb des Moduls erfüllen.
+DolibarrVersion=Dolibarr -Version
+ModuleVersion=Modulversion
+PHPVersion=PHP -Version
+DatabaseVersion=Datenbankversion
+WebServerVersion=Webserverversion
+
+extraPricePresentation=Personalisierte Bestimmung des Verkaufspreises mit anderen Feldern
+ExtraPriceSetup=Extraprice -Modulkonfiguration
+ExtrapriceFormulaSetting=Preisberechnung Formelkonfiguration
+ExtrapriceFormula=Algorithmus
+ExtrapriceExplication='$ Newprice' entspricht dem berechneten Verkaufspreis '$ original' zum Startpreis, die anderen Bereiche werden in der Dokumentation erläutert
+
+ExtrapriceProductTVAEXport=Mehrwertsteuer -Rechnungsstellung für Importe
+ProductTVAExportExplication=Mit der Auswahl mit einem Produkt/einer Dienstleistung können Sie nur die Mehrwertsteuer für Transportunternehmen eingeben
+MoreModules=Andere Module
+MoreModulesLink=Unsere anderen Module
+RefreshExtraprice=Preise aktualisieren
+extrapriceGeneralSetting=Allgemeine Einstellungen
+ExtraPriceSetup=Extraprice -Modulkonfiguration
+ExtraPrice=Extraktor

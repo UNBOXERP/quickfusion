@@ -1,0 +1,54 @@
+# Dolibarr language file - es_ES - Discounts
+CHARSET = UTF-8
+Module400027Name=Promociones
+Module400027Desc=Gestiona promociones
+Permission4000271=Leer promociones
+Permission4000272=Crear promociones
+PDFDiscountDescription=Modelo PDF que muestra las promociones
+DocModelDiscountDescription=Modelo PDF que muestra las promociones
+DiscountsSetup=Configuración promociones
+ShowOptions=Opciones
+RulesToApply=En caso que haya conflicto entre varias promociones, se aplicarán...
+Both=Ambos
+Commercial=Comercial
+Time=Temporal
+NewDiscount=Nuevo descuento
+DiscountType=Tipo descuento
+dtocom=Descuento
+type_dto1=Comercial
+type_dto2=Financiero
+type_dto3=Temporal
+type_dto4= Compras X Pagas Y
+type_dto5=Dto. segunda unidad
+InPromo=En promoción
+Pay=Pagas
+ByPriority=Por prioridad
+ShowDiscount=Mostrar descuento
+TypeShowDiscount0=Configuración por defecto del módulo
+TypeShowDiscount1=No mostrar el descuento en la casilla "Dto." y aplicarlo directamente al precio de venta
+TypeShowDiscount2=Mostrar el descuento aplicado en la casilla "Dto." de la linea de venta
+GroupLinesSameProduct=Agrupar todas las líneas con el mismo producto/servicio en una única línea
+OptionGroupLines=Agrupar líneas
+OptionNoGroupLines=No agrupar líneas
+
+DeleteDiscountLine=Eliminar descuento
+ConfirmDeleteDiscountLine=¿Está seguro de querer eliminar este descuento?
+DiscountDeleted=Descuento eliminado correctamente
+
+#Errors
+ErrDiscountValue=El valor del descuento es incorrecto
+ErrDescription=Hay que indicar una descripción
+ErrType=No ha seleccionado ningún tipo de descuento
+ErrDiscountCommercialAlreadyExists=La suma de los descuentos comerciales excede de 100
+ErrDiscountAlreadyExists=Ya existe el tipo de descuento %s, edite el existente
+
+#About
+AboutInfo=Este módulo ha sido desarrollado y distribuido por 2byte.es Soluciones Informáticas, <a href="http://www.2byte.es">www.2byte.es</a> (Preferred Partner de Dolibarr)
+MoreModules=Otros módulos desarrollados por 2byte.es están disponibles en su tienda oficial
+MoreModulesLink=<a target="_blank" href="https://shop.2byte.es/">Pulse para acceder a la tienda</a>
+ModulesHelp=Tienes disponibles manuales y vídeos de nuestros módulos externos <a target="_blank" href="https://liveagent.2byte.es/853598-M%C3%B3dulos-Oficiales-Externos-Dolibarr">aquí</a>
+
+Discounts=Descuentos
+UpdateDiscount=Modificar descuento
+DiscountsApplied=Descuentos aplicados
+ProductsCategoryShort=Etiquetas/categorías de productos

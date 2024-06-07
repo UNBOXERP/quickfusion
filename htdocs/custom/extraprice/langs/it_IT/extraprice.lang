@@ -1,0 +1,48 @@
+# Dolibarr language file - it_IT - extraprice
+CHARSET=UTF-8
+
+##ADMIN
+NothingToSetup=Attiva il modulo per accedere alla pagina di configurazione
+GeneralSetup=impostazioni generali
+GeneralSetting=impostazioni generali
+PatasTools=Strumenti Patas-M
+PatasToolsNews=Trova qui le informazioni da patas-monkey.com (richiede una connessione Internet)
+PatasMonkeyPresent=Questo modulo è una creazione di Patas-Monkey, una documentazione è disponibile sul nostro sito
+MoreModulesLink=Puoi trovare tutti i nostri sviluppi su Dolistore
+SettingIsOnToolsMenu=Il modulo non richiede alcuna configurazione particolare.<br/> Le sue funzionalità sono accessibili dagli strumenti principali "Patas-M".
+BackToModuleList=Torna all'elenco dei moduli
+NewVersionAviable=È disponibile una nuova versione del modulo
+NumberVersion=Versione
+MonthVersion=Mese di pubblicazione
+ChangesVersion=Modifiche principali apportate
+
+##ABOUT
+About=Di
+Slogan=Sviluppo, supporto e formazione per Dolibarr
+LienModules=I nostri moduli
+LienServices=I nostri servizi
+LienDoc=La nostra documentazione
+LienDolistore=Trova i nostri altri moduli
+Changelog=Modifica del modulo
+SupportModuleInformation=Informazioni tecniche
+SupportModuleInformationDesc=Queste informazioni sono utili e possono essere chiesto se si incontra un bug nel funzionamento del modulo.
+DolibarrVersion=Versione Dolibarr
+ModuleVersion=Versione del modulo
+PHPVersion=Versione PHP
+DatabaseVersion=Versione del database
+WebServerVersion=Versione server web
+
+extraPricePresentation=Determinazione personalizzata del prezzo di vendita con altri campi
+ExtraPriceSetup=Configurazione del modulo extraprice
+ExtrapriceFormulaSetting=Configurazione della formula di calcolo del prezzo
+ExtrapriceFormula=Algoritmo
+ExtrapriceExplication="$ Newprice" corrisponde al prezzo di vendita calcolato "$ originale" al prezzo di partenza, le altre aree sono spiegate nella documentazione
+
+ExtrapriceProductTVAEXport=Fatturazione IVA per le importazioni
+ProductTVAExportExplication=La selezione Un prodotto/servizio consente di inserire solo l'IVA per le compagnie di trasporto
+MoreModules=Altri moduli
+MoreModulesLink=I nostri altri moduli
+RefreshExtraprice=Aggiorna i prezzi
+extrapriceGeneralSetting=impostazioni generali
+ExtraPriceSetup=Configurazione del modulo extraprice
+ExtraPrice=Estrattore

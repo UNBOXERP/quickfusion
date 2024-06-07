@@ -1,0 +1,45 @@
+# Dolibarr language file - it_IT - Scontistica
+CHARSET = UTF-8
+Module400027Name=Promozioni
+Module400027Desc=Gestione delle promozioni per la vendita di prodotti
+Permission4000271=Visualizzare promozioni
+Permission4000272=Creare promozioni
+PDFDiscountDescription=Modello PDF per mostrare le promozioni
+DocModelDiscountDescription=Model PDF showing promotions
+DiscountsSetup=Impostazioni
+ShowOptions=Opzioni
+RulesToApply=Se esiste un conflitto tra cliente e promozioni sul prodotto, sarà applicato...
+Both=Entrambi
+Commercial=Commerciale
+Time=Temporaneo
+NewDiscount=Nuovo sconto
+DiscountType=Tipo di sconto
+dtocom=Sconto
+type_dto1=Commerciale
+type_dto2=Finanziario
+type_dto3=Temporaneo
+type_dto4= Acquista X paga Y
+type_dto5=Sconto secondo unità
+InPromo=In promozione
+Pay=Paghi
+GroupLinesSameProduct=Raggruppa tutte le linee con lo stesso prodotto/servizio su una sola linea
+OptionGroupLines=Raggruppa lines
+OptionNoGroupLines=Non raggruppare lines
+
+DeleteDiscountLine=Elimina sconto
+ConfirmDeleteDiscountLine=Vuoi davvero eliminare questo sconto?
+DiscountDeleted=Sconto eliminato con successo
+UpdateDiscount=Modifica sconto
+
+#Errors
+ErrDiscountValue=Il valore dello sconto non è corretto
+ErrDescription=Devi inserire una descrizione
+ErrType=Non hai selezionato nessuno sconto
+ErrDiscountCommercialAlreadyExists=La somma degli sconti commerciali supera il 100%
+ErrDiscountAlreadyExists=Il tipo di sconto %s esiste già, prego modifica l'esistente
+
+#About
+AboutInfo=Questo modulo è sviluppato e distribuito da 2byte.es Soluciones Informáticas <a href="http://www.2byte.es"> www.2byte.es </a> (Dolibarr Preferred Partner)
+MoreModules=Altri moduli sviluppati da 2byte.es sono disponibili sullo store ufficiale
+MoreModulesLink=<a target="_blank" href="https://shop.2byte.es/">Premi per visualizzare lo shop</a>
+ModulesHelp=Esistono tutorial e video disponibili per i nostri moduli esterni <a target="_blank" href="https://liveagent.2byte.es/853598-M%C3%B3dulos-Oficiales-Externos-Dolibarr">qui</a>

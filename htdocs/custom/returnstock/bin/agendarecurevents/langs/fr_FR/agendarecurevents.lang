@@ -1,0 +1,63 @@
+# Copyright (C) 2019 Admin <marcello.gribaudo@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#
+# Générique
+#
+
+# Module label 'ModuleAgendarecureventsName'
+ModuleAgendarecureventsName = Agenda Evènements récurrents
+# Module description 'ModuleAgendarecureventsDesc'
+ModuleAgendarecureventsDesc = Événements récurrents dans l'agenda
+
+#
+# Page d'administration
+#
+AgendarecureventsSetup = Paramètres du Agenda Evènements récurrents
+Settings = Paramètres
+AgendarecureventsSetupPage = Page de paramètres pour Agenda Evènements récurrents
+
+
+#
+# About page
+#
+About = Sur 
+AgendarecureventsAbout = Sur Agenda Evènements récurrents
+AgendarecureventsAboutPage = Page sur Agenda Evènements récurrents
+
+#
+# Other
+#
+Agendarecurevents = Événements récurrents dans l'agenda
+RecurrentEvent = Evènements récurrents
+Frequency=Fréquence
+Daily = Tous les jours
+Weekly = Hebdomadaire
+Monthly = Mensuel
+Yearly = Annuel
+ExcludedDays=Jours exclus
+ReperatEvent=Répétez l'événement
+Each=Chaque
+UntilDate=Jusqu'à la date
+Times=fois
+weeks=semaines
+months=mois
+years=ans
+TimesNotValid=La valeur du champ "fois" n'est pas valide
+DateNotValid=La valeur du champ "Jusqu'à la date" n'est pas valide
+NewEventCreatedAt=Créé le nouvel événement sur
+Clone=cloner
+NoDateTypeFound=Le type de fréquence n'a pas été trouvé
+ErrorInEventGeneration=Erreur lors de la génération de l'événement

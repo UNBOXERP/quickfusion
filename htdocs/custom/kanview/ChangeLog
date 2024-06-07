@@ -1,0 +1,267 @@
+--------------------------------------------------------------
+Français - KanView ChangeLog   (see below English version)
+--------------------------------------------------------------
+
+**** Changelog de 2.6 à 2.7
+- Bugfix : la vue kanban des prospects n'affichait pas les mêmes prospects que la liste des prospects standard de Dolibarr
+
+**** ChangeLog de 2.5 à 2.6
+- Mise à niveau pour Dolibarr 14
+- Ajout de 2 constantes cachées pour la vue projets : KANVIEW_PROJECTS_NOT_SHOW_UNKNOWN_STATUS et KANVIEW_PROJECTS_NOT_SHOW_INACTIVE
+- Bugfixes
+
+**** ChangeLog de 2.4 à 2.5
+- Bugfix : Vue Prospects, tenir compte de la permission Ne peut voir que les tiers dont il est commercial
+
+**** ChangeLog de 2.3.2 à 2.4
+- Mise à niveau pour Dolibarr 13
+- Bugfixes
+
+**** ChangeLog de 2.3.1 à 2.3.2
+- Bugfix : filtre sur le pays/département
+
+**** ChangeLog de 2.3.0 à 2.3.1
+- Bugfix : vue Facture clients : le champ amount a été supprimé en Dolibarr 12
+
+**** ChangeLog de 2.2.0 à 2.3.0
+- Nouveau : Vue Factures fournisseurs : posibilité de trier par date d'échéance
+- Nouveau : Vue Projets : Montant total des opportunités sur les colonnes
+- Mise à niveau pour Dolibarr 12
+- Bugfix : Vue Prospects : filtre départements ne fonctionnait pas
+
+
+**** ChangeLog de 2.1.1 à 2.2.0
+- Nouveau : Mise à niveau de compatibilité vers Dolibarr 11.*
+- Nouveau : Vue Projets : Filtre par contact
+- Amélioration : La largeur minimum des fiches Kanban a été fixé à 150px pour toutes les vues
+- Bugfix : Vue Factures fournisseurs : si Drag&Drop de "A classer payée" vers Payée, un message "undefined" était parfois affiché 
+- Bugfix : Vue Tâches : Le chemin vers la photo du contact n'était pas correct
+- Bugfix : Lorsque l'affichage des photos/logos était désactivé dans la config, on perdait aussi les liens vers les tiers/contacts
+- Bugfix : Vue Tâches : Le filtre par contact pouvait ne pas être correct si on a plus de 10 contacts
+- Bugfix : Vue Tâches : Même si l'affichage des logos/photos était désactivé, ils étaient affichés quand même dans cette vue
+- Bugfix : Vue Prospects : Si les niveaux de perspects étaient personnalisé, c'est code et non le libellé qui était affcihé dans les Tag
+- Bugfix : Vue Tâches : Le filtre des contacts n'affichait pas tous les contacts si la liste est filtré
+- Bugfix : Vue Propales : Un message d'erreur pouvait s'afficher même si le Drag&Drop s'est bien passé
+
+**** ChangeLog de 2.1.0 à 2.1.1 ****
+- Modifs mineures
+
+**** ChangeLog de 2.0.5 à 2.1.0 ****
+
+- Nouveau : Mise à niveau pour compatibilité Dolibarr 10.*
+- Nouveau : Compatibilité avec MultiCompany
+- BugFix : Les tooltips n'étaient plus actifs après un Drag&Drop
+- BugFix : La pagination ne respectait pas le filtre
+- Amélioration : Vue Projets : Si un état est désactivé dans le dictionnaire Dolibarr, on grise le titre de la colonne correspondante
+- Nouveau : Vue Projets : Ajout du filtre sur les Tags/Catégories du projet
+- Nouveau : Date début du filtre est maintenant paramétrable
+- BugFix : Vue Prospects : Si le TAG est sur Potentiel, parfois la zone affichait une erreur
+
+
+**** ChangeLog de 2.0.4 à 2.0.5 ****
+- Vue Kanban des Projets : - Si la valeur du TAG est réglée sur "probabilité d'opportunité", cette valeur ne se mettait pas à jour lorsqu'on déplace une fiche
+- Vues Kanban des Projets et celle des Tâches : - Les droits sur les projets et tâches ont été alignés avec ceux de Dolibarr
+                                                  (L'utilisateur ne peut voir/modifer que les projets/tâches sur lesquels il a suffisamment de permissions)
+
+**** ChangeLog de 2.0.3 à 2.0.4 ****
+- Vue Kanban des Projets    : - Possibilité de modifier la probabilité d'opportunité si le statut change suivant les valeurs
+                                définies dans le dictionnaire "Statut d'opportunité pour les affaires/projets"
+                                (activable par un paramètre dans la page de config.)
+                              - Afficher le libellé du statut si une traduction de son code n'a pas été trouvée
+- Vue Kanban des Prospects  : - Possibilité d'afficher également les "Prospect/Client"s
+                                (voir paramétre associé dans la page de config.)
+
+**** ChangeLog de 2.0.2 à 2.0.3 ****
+- Page de config. - Vue Kanban des projets : ajout d'un paramètre permettant de n'afficher que les projets ouverts par défaut
+- Vue Kanban des projets : le tooltip n'affichait pas le montant de l'opportunité
+- Description des permissions : ajout de l'expression : "(dépend aussi des permissions relatives au module ...)"
+      (valable si les permissions avancées sont activées dans Dolibarr)
+- BugFix : Modif de la logique de test des versions (préparation pour la version Dolibarr 10.0+)
+- BugFix : la page de configuration n'affichait pas les widgets pour sélectionner les couleurs
+
+**** ChangeLog de 2.0.1 à 2.0.2 ****
+
+- BugFix : Quand le TAG des fiches projets dans la vue Kanban des projets est réglé pour afficher le montant
+           de l'opportunité, il ne l'affichait pas.
+
+**** ChangeLog de 2.0.0 à 2.0.1 ****
+
+- Nouveau : Compatibilité étendues aux versions 9.0+ de Dolibarr
+
+- BugFix : Le menu gauche n'était pas grisé/invisible si on n'a pas les permissions
+           (valable pour les versions Dolibarr >= 7.0.0,
+           pour les autres versions le menu gauche reste toujours actif à cause d'une restriction Dolibarr)
+           (Quelques soit le cas l'accès aux pages est interdit si on n'a pas les permissions)
+
+- Réctififcation de quelques traductions anglaises
+
+**** ChangeLog de 1.0.0 à 2.0.0 ****
+
+- Nouveau : La vue Kanban des Factures fournisseurs a été ajoutée
+
+- Commun à toutes les vues Kanban :
+      - Nouveau : Gestion des droits avancés, droit global sur le module + droits sur chaque vue kanban si les droits avancés son activés
+      - Nouveau : L'accès à la fiche Dolibarr associée à la fiche Kanban est possible sur toutes les vues Kanban
+                  par click sur la référence de l'objet
+      - Nouveau : Photos des contacts sur les tuiles des Tâches, accès à la fiche Dolibarr du contact par click sur la photo
+                  Logo du tiers sur les autres vues Kanban, accès à la fiche Dolibarr du Tiers par click sur le logo
+      - Nouveau : Légende pour vous rappeler vos choix de paramétrage sur toutes les vues Kanban
+      - Nouveau : Impression : Un click droit sur le titre d'une colonne affiche le menu contextuel "Imprimer"
+                  Ce qui permet d'afficher une version imprimable dans une fenêtre séparée
+                  et une fenêtre de paramétrage de l'imprimante
+      - Modif : Le nombre de fiches dans une colonne s'affiche maintenant dans un badge avec le titre (et non plus sous le titre)
+      - Nouveau : La fiche qui vient d'être déplacée est entourée d'un cadre de couleur magenta pour la retrouver facilement
+      - BugFix : Affichage de la devise avec les montants
+      - Modif : Les tooltips ont été "aérés" et donc plus lisibles
+      - Nouveau : Compatibilité étendues aux versions 8.0+ de Dolibarr
+
+- Spécifique Tâches :
+      - Nouveau : Dialogue pour éditer la progression lors du Drag&Drop
+      - Nouveau : Toutes les colonnes sont Draggable et Droppable
+      - Nouveau : Affichage de la progression en cours sous-forme graphique sur la tuile même
+                  (sa valeur numérique est également affichée dans son tooltip)
+      - Nouveau : Filtre par Ressource (contact)
+
+- Spécifique Projets :
+      - Nouveau : Filtre par Client
+      - BugFix : La référence du projet n'était pas affichée dans la fiche kanban du projet
+
+- Spécifique Propales :
+      - Nouveau : Paramètre "Retard sur date fin validité" représenté par la couleur du coin inférieur droit de la fiche kanban
+
+- Spécifique Factures clients :
+      - Nouveau : Pouvoir classer "Payée" une facture "A classer payée"
+
+
+-------------------------------------------------- ------------
+English - KanView ChangeLog
+-------------------------------------------------- ------------
+
+**** ChangeLog from 2.5 to 2.6
+- Update for Dolibarr 14
+- Add 2 hidden constants for projects view : KANVIEW_PROJECTS_NOT_SHOW_UNKNOWN_STATUS et KANVIEW_PROJECTS_NOT_SHOW_INACTIVE
+- Bugfixes
+
+**** ChangeLog from 2.4 to 2.5
+- Bugfix : Prospects view, restrict view to thirdparties who have the user as salesman
+
+**** ChangeLog from 2.3.2 to 2.4
+- Update for Dolibarr 13
+- Bugfixes
+
+**** ChangeLog de 2.3.1 à 2.3.2
+- Bugfix : country/state filter
+
+**** ChangeLog from 2.3.0 to 2.3.1
+- Bugfix : Customer invoices view : amount field was deleted on Dolibarr 12
+
+**** ChangeLog from 2.2.0 à 2.3.0
+- New : Suppliers invoices view : sort by due date 
+- New : Projets view : Total amount of opportunities in the columns
+- Update for Dolibarr 12
+- Bugfix : Prospects view : regions filter was not working
+
+**** ChangeLog from 2.1.1 to 2.2.0
+- New: Compatibility upgrade to Dolibarr 11. *
+- New: Project view: Contact filter
+- Improvement: The minimum width of Kanban cards has been set at 150px for all views
+- Bugfix: Supplier invoices view: if Drag & Drop from "To be classified paid" to Paid, an "undefined" message was sometimes displayed
+- Bugfix: Tasks view: The path to the contact photo was not correct
+- Bugfix: When the display of photos / logos was disabled in the config, we also lost links to third parties / contacts
+- Bugfix: Tasks view: The contact filter could not be correct if we have more than 10 contacts
+- Bugfix: Tasks view: Even if the display of logos / photos was disabled, they were still displayed in this view
+- Bugfix: View Prospects: If the levels of prospects were personalized, code was displayed insteed of label in the Tag
+- Bugfix: Tasks view: The contacts filter did not display all the contacts if the list is filtered
+- Bugfix: Propales View: An error message could appear even if the Drag & Drop went well
+
+**** ChangeLog from 2.1.0 fo 2.1.1 ****
+- Minor updates
+
+**** ChangeLog from 2.0.5 to 2.1.0 ****
+
+- New: Upgrade for compatibility Dolibarr 10. *
+- New: MultiCompany compatibility
+- BugFix: Tooltips were disabled after Drag&Drop
+- BugFix: Pagination did not respect the filter
+- Improvement: Projects view: If a state is deactivated in the Dolibarr dictionary, the title of the corresponding column is grayed out
+- New: Projects view: New filter projects Tags/Categories
+- New: Start date of the filter is now configurable
+- BugFix: Prospects view : If the TAG is on Potentiel, sometimes error was displayed
+
+
+**** ChangeLog from 2.0.4 to 2.0.5 ****
+
+- Kanban Projects view: - If the value of the TAG is set to "probability of opportunity", this value would not be updated when a card is moved
+- Kanban Projects and Tasks view: - Rights on projects and tasks have been aligned with those of Dolibarr
+                                    (The user can only view/modify projects/tasks on which he has sufficient permissions)
+
+**** ChangeLog from 2.0.3 to 2.0.4 ****
+
+- Kanban Projects view:        - Ability to modify opportunity probability if status changes according to values
+                                 defined in the dictionary "Opportunity status for project/lead"
+                                 (can be activated by a new parameter in the config page)
+                               - Display the status label if a translation of its code was not found
+- Kanban Prospects view:       - Possibility to also display the "Prospect / Client"s
+                                 (see associated new parameter in the config page)
+
+**** ChangeLog from 2.0.2 to 2.0.3 ****
+
+- Config page. - Kanban projects view: add a parameter to allow to display only open projects by default
+- BugFix: Kanban projects view: the tooltip did not display the amount of the opportunity
+- Description of the permissions: addition of the expression: "(also depends on the permissions for the ... module)"
+       (valid if advanced permissions are enabled in Dolibarr)
+- BugFix: Modify version test logic (preparation for Dolibarr version 10.0+)
+- BugFix: Configuration page did not display widgets to select colors
+
+**** ChangeLog from 2.0.1 to 2.0.2 ****
+
+- BugFix : When the TAG of the Project cards in the Kanban Project View is set to show the amount
+           of the opportunity, he did not show it.
+
+**** ChangeLog from 2.0.0 to 2.0.1 ****
+
+- New: Compatibility extended to versions 9.0+ of Dolibarr
+
+- BugFix: The left menu was not greyed / hide if we do not have permissions
+           (valid for Dolibarr versions> = 7.0.0,
+           for other versions the left menu is still active due to a Dolibarr restriction)
+           (Anyway the access to the pages is forbidden if we do not have the permissions)
+
+- Rectification of some English translations
+
+**** ChangeLog from 1.0.0 to 2.0.0 ****
+
+- New: The Kanban View of Supplier Invoices has been added
+
+- Common to all Kanban views:
+      - New: Management of advanced rights, global right on the module + rights on each kanban view if the advanced rights are activated
+      - New: Access to the Dolibarr card associated with the Kanban card is possible on all Kanban views
+                  by clicking on the reference of the object
+      - New: Photos of the contacts on the tiles of the Tasks, access to the file Dolibarr of the contact by click on the photo
+                  Third party logo on the other Kanban views, access to the Dolibarr file of the Third Party by clicking on the logo
+      - New: Legend to remind you of your setting choices on all Kanban views
+      - New: Printing: A right click on the title of a column displays the contextual menu "Print"
+                  This makes it possible to display a printable version in a separate window
+                  and a window for setting the printer
+      - Modify: The number of cards in a column is now displayed in a badge with the title (and no longer under the title)
+      - New: The plug that has just been moved is surrounded by a magenta color frame to find it easily
+      - BugFix: Currency Display with Amounts
+      - Modif: The tooltips are more readable
+      - New: Compatibility extended to versions 8.0+ of Dolibarr
+
+- Specific Tasks:
+      - New: Dialogue to edit the progress during Drag & Drop
+      - New: All columns are Draggable and Droppable
+      - New: Display the progress in progress graphical subform on the tile itself
+                  (its numeric value is also displayed in its tooltip)
+      - New: Filter by Resource (contact)
+
+- Specific Projects:
+      - New: Filter by Client
+      - BugFix: The project reference was not displayed in the kanban project file
+
+- Specific Propales:
+      - New: Parameter "Delay on validity end date" represented by the color of the bottom right corner of the kanban card
+
+- Specific Customer Invoices:
+      - New: To be able to classify "Paid" an invoice "To classify paid"

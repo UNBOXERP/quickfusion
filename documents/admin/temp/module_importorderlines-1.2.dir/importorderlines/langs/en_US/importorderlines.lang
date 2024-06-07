@@ -1,0 +1,53 @@
+# Copyright (C) 2023 SuperAdmin
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleImportorderlinesName'
+ModuleImportorderlinesName = Importorderlines
+# Module description 'ModuleImportorderlinesDesc'
+ModuleImportorderlinesDesc = Importorderlines description
+
+#
+# Admin page
+#
+ImportorderlinesSetup = Importorderlines setup
+Settings = Settings
+ImportorderlinesSetupPage = Importorderlines setup page
+IMPORTORDERLINES_MYPARAM1 = My param 1
+IMPORTORDERLINES_MYPARAM1Tooltip = My param 1 tooltip
+IMPORTORDERLINES_MYPARAM2=My param 2
+IMPORTORDERLINES_MYPARAM2Tooltip=My param 2 tooltip
+
+
+#
+# About page
+#
+About = About
+ImportorderlinesAbout = About Importorderlines
+ImportorderlinesAboutPage = Importorderlines about page
+
+#
+# Sample page
+#
+MyPageName = My page name
+
+#
+# Sample widget
+#
+MyWidget = My widget
+MyWidgetDescription = My widget description

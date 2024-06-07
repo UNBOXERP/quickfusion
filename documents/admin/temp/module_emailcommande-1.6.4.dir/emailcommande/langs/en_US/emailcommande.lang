@@ -1,0 +1,60 @@
+# Copyright (C) 2023 SuperAdmin
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleEmailcommandeName'
+ModuleEmailcommandeName = Sales Order notification
+# Module description 'Module Sales Order notification'
+ModuleEmailcommandeDesc = Sales Order notification description
+
+#
+# Admin page
+#
+EmailcommandeSetup = Emailcommande setup
+Settings = Settings
+EmailcommandeSetupPage = Emailcommande setup page
+EMAILCOMMANDE_MYPARAM1 = My param 1
+EMAILCOMMANDE_MYPARAM1Tooltip = My param 1 tooltip
+EMAILCOMMANDE_MYPARAM2=My param 2
+EMAILCOMMANDE_MYPARAM2Tooltip=My param 2 tooltip
+EMAILCOMMANDE_sender_email=Sender Email
+EMAILCOMMANDE_destination_email=Recipient Email
+EMAILCOMMANDE_subject=Subject
+EMAILCOMMANDE_body=Body
+#
+# About page
+#
+About = About
+EmailcommandeAbout = About Emailcommande
+EmailcommandeAboutPage = Emailcommande about page
+send=Send mail
+notifycationmailsend= Request Art file
+NOTIFY_EMAIL=ARTFILE EMAIL SENT
+
+#
+# Sample page
+#
+MyPageName = My page name
+
+#
+# Sample widget
+#
+MyWidget = My widget
+MyWidgetDescription = My widget description
+
+

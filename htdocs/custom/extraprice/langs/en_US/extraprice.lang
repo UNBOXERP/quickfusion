@@ -1,0 +1,48 @@
+# Dolibarr language file - en_US - extraprice
+CHARSET=UTF-8
+
+##ADMIN
+NothingToSetup=Activate the module to access the configuration page
+GeneralSetup=General settings
+GeneralSetting=General settings
+PatasTools=Patas-m tools
+PatasToolsNews=Find here the information from patas-monkey.com (requires an internet connection)
+PatasMonkeyPresent=This module is a creation of the PataS-Monkey, a documentation of it is available on our site
+MoreModulesLink=You can find all our developments on dolistore
+SettingIsOnToolsMenu=The module does not require any particular configuration.<br/> Its features are accessible from the main menu 'Tools Patas-M'.
+BackToModuleList=Back to the modules list
+NewVersionAviable=A new version of the module is available
+NumberVersion=Version
+MonthVersion=Month of publication
+ChangesVersion=Main changes made
+
+##ABOUT
+About=About
+Slogan=Development, support and training for Dolibarr
+LienModules=Our modules
+LienServices=Our services
+LienDoc=Our documentation
+LienDolistore=Find our other modules
+Changelog=Module change
+SupportModuleInformation=Technical informations
+SupportModuleInformationDesc=This information is useful and may be asked if you meet a bug in the operation of the module.
+DolibarrVersion=Dolibarr version
+ModuleVersion=Module version
+PHPVersion=PHP version
+DatabaseVersion=Database version
+WebServerVersion=Web server version
+
+extraPricePresentation=Personalized determination of the sale price with other fields
+ExtraPriceSetup=Extraprice module configuration
+ExtrapriceFormulaSetting=Price calculation formula configuration
+ExtrapriceFormula=Algorithm
+ExtrapriceExplication='$ Newprice' corresponds to the calculated selling price '$ original' at the starting price, the other areas are explained in the documentation
+
+ExtrapriceProductTVAEXport=VAT invoicing for imports
+ProductTVAExportExplication=The selection A product/service allows you to enter only VAT for transport companies
+MoreModules=Other modules
+MoreModulesLink=Our other modules
+RefreshExtraprice=Update prices
+extrapriceGeneralSetting=general settings
+ExtraPriceSetup=Extraprice module configuration
+ExtraPrice=Extractor

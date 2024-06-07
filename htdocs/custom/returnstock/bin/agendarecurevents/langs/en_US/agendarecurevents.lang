@@ -1,0 +1,63 @@
+# Copyright (C) 2019 Admin <marcello.gribaudo@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleAgendarecureventsName'
+ModuleAgendarecureventsName = Agenda Recurring events
+# Module description 'ModuleAgendarecureventsDesc'
+ModuleAgendarecureventsDesc = Recurring events in the Agenda
+
+#
+# Admin page
+#
+AgendarecureventsSetup = Agenda Recurring events settings
+Settings = Settings
+AgendarecureventsSetupPage = Agenda Recurring events settings page
+
+
+#
+# About page
+#
+About = About
+AgendarecureventsAbout = About Agenda Recurring events
+AgendarecureventsAboutPage = Agenda Recurring events about page
+
+#
+# Other
+#
+Agendarecurevents = Agenda Recurring events
+RecurrentEvent = Recurring events
+Frequency=Frequency
+Daily = Daily
+Weekly = Weekly
+Monthly = Monthly
+Yearly = Yearly
+ExcludedDays=Days Excluded
+ReperatEvent=Repeat the event
+Each=Every
+UntilDate=Until the date
+Times=times
+weeks=weeks
+months=months
+years=years
+TimesNotValid=The value of the "times" field is invalid
+DateNotValid=The value of the "Until the date" field is invalid
+NewEventCreatedAt=Created the new event on
+Clone=Clone
+NoDateTypeFound=The type of frequency was not found
+ErrorInEventGeneration=Error generating event

@@ -1,0 +1,52 @@
+# Dolibarr language file - en_US - Discounts
+CHARSET = UTF-8
+Module400027Name=Promotions
+Module400027Desc=Manages promotions
+Permission4000271=Read promotions
+Permission4000272=Create promotions
+PDFDiscountDescription=Model PDF showing promotions
+DocModelDiscountDescription=Model PDF showing promotions
+DiscountsSetup=Configuration promotions
+ShowOptions=Options
+RulesToApply=In case there is conflict between several promotions, they will apply ...
+Both=Both
+Commercial=Commercial
+Time=Temporary
+NewDiscount=New Discount
+DiscountType=Discount type
+dtocom=Discount
+type_dto1=Commercial
+type_dto2=Financial
+type_dto3=Temporary
+type_dto4= Buy X pay Y
+type_dto5=Disc.second unit
+InPromo=In promotion
+Pay=Pay
+ByPriority=By priority
+GroupLinesSameProduct=Group all lines with the same product/service on a single line
+OptionGroupLines=Group lines
+OptionNoGroupLines=Do not group lines
+
+DeleteDiscountLine=Delete discount
+ConfirmDeleteDiscountLine=Are you sure you want to delete this discount?
+DiscountDeleted=Discount deleted successfully
+
+#Errors
+ErrDiscountValue=The value of the discount is incorrect
+ErrDescription=You must enter a description
+ErrType=You have not selected any discount
+ErrDiscountCommercialAlreadyExists=The sum of commercial discounts exceeds 100
+ErrDiscountAlreadyExists=The type of discount %s already exists, please edit the existent
+
+#About
+AboutInfo=This module has been developed and distributed by 2byte.es Soluciones Informáticas <a href="http://www.2byte.es"> www.2byte.es </a> (Dolibarr Preferred Partner)
+MoreModules=Other modules developed by 2byte.es are available on their official store
+MoreModulesLink=<a target="_blank" href="https://shop.2byte.es/">Click to go to the shop</a>
+ModulesHelp=You have available guides and videos of our external modules<a target="_blank" href="https://liveagent.2byte.es/853598-M%C3%B3dulos-Oficiales-Externos-Dolibarr">here</a>
+
+DiscountsApplied=Discounts applied
+
+Discounts=Discounts
+UpdateDiscount=Edit discount
+DiscountsApplied=Discounts applied
+ProductsCategoryShort=Products tag/category

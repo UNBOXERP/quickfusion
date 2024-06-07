@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Redirect URI Page</title>
+</head>
+<body>
+<script>
+    // Obtén el código de autorización de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const authorizationCode = urlParams.get('code');
+
+    // Puedes procesar el código de autorización según tus necesidades
+    // Por ejemplo, puedes enviarlo al servidor para intercambiarlo por tokens de acceso.
+
+    // Aquí puedes mostrar un mensaje o redirigir al usuario a otra página, según tus necesidades.
+    document.body.innerHTML = `<h1>Authorization Code: ${authorizationCode}</h1>`;
+</script>
+</body>
+</html>
+

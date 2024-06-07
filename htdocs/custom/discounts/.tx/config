@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[external-modules-2bytees-dolibarr.2Promo]
+file_filter = langs/<lang>/discounts.lang
+source_file = langs/en_US/discounts.lang
+source_lang = en_US
+type = MOZILLAPROPERTIES
