@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/../inc/vendor/autoload.php');
+require_once(__DIR__ . '/actions.php');
 
 use QuickBooksOnline\API\DataService\DataService;
 use QuickBooksOnline\API\Core\Http\Serialization\XmlObjectSerializer;
@@ -21,6 +22,7 @@ use QuickBooksOnline\API\Core\ServiceContext;
 use QuickBooksOnline\API\PlatformService\PlatformService;
 use QuickBooksOnline\API\Facades\PurchaseOrder;
 use QuickBooksOnline\API\Data\IPPPurchase;
+use Dolibarr\QuickBooks\Actions;
 
 
 class Syncqbooks
@@ -35,6 +37,7 @@ class Syncqbooks
 		$this->dataService = $this->configureDataService($conf);
 
 	}
+
 	private function configureDataService($conf)
 	{
 		return DataService::Configure([
@@ -46,6 +49,7 @@ class Syncqbooks
 			'baseUrl' => "development"
 		]);
 	}
+
 	public function updateFacturasQBooks()
 	{
 		$facturas = $this->getFacturasDolibarr();
@@ -88,7 +92,8 @@ class Syncqbooks
 
 	private function getFacturasQbooksNoDolibarr($id)
 	{
-		global $conf;
+		global $conf, $db;
+
 
 		$dataService = DataService::Configure(array(
 			'auth_mode' => 'oauth2',
@@ -128,238 +133,28 @@ class Syncqbooks
 			}
 			exit;
 		}
-
-
 	}
 
 	public function CreaFacturasQbooks($facturas)
 	{
-		global $conf, $db;
-		$lineas = array();
-		$lineasarray = array();
-//		$this->tokenrefresh();
-		$dataService = $this->configureDataService($conf);
+        $invoicesLenght = count($facturas);
+        if ($invoicesLenght > 1) {
+            Actions::syncBatchInvoices($facturas);
+        } else if ($invoicesLenght == 1) {
+            Actions::syncSingleInvoice($facturas[0]);
+        } else {
+            setEventMessages("Debe seleccionar al menos una factura para sincronizar", [422], 'errors');
+        }
+	}
 
-		/*
-		 * Retrieve the accessToken value from session variable
-		 */
-		$accessToken = $_SESSION['sessionAccessToken'];
+	public function CreaThirdparty($customers): void
+    {
+        if (!count($customers)) {
+            setEventMessages("Debe seleccionar al menos un cliente para sincronizar", [422], 'errors');
+        }
 
-		/*
-		 * Update the OAuth2Token of the dataService object
-		 */
-		$dataService->updateOAuth2Token($accessToken);
-	;
-		foreach ($facturas as $factura) {
-			$clientes=$this->GetCustomer($factura->thirdparty);
-			if ($clientes[0]->Id == null || $clientes[0]->Id == "") {
-				$cliente = $this->CreaClienteQbooks($factura->thirdparty);
-			} else {
-				$cliente = $clientes;
-			}
-			foreach ($factura->lines as $line) {
-                $productos=$this->GetProduct($line->fk_product);
-				if ($productos[0]->Id == null || $productos[0]->Id == "") {
-					$producto = $this->CreaProductoQbooks($line->fk_product);
-				} else {
-					$producto = $productos;
-				}
-				$ClienteId=(string)$cliente[0]->Id;
-				$ClienteName=$cliente[0]->DisplayName;
-				$lineasarray[] = array(
-					"Description" => $line->desc,
-					"Amount" => $line->total_ht,
-					"LineNum" => $line->rang,
-					"DetailType" => "SalesItemLineDetail",
-					"SalesItemLineDetail" => array(
-						"ItemRef" => array(
-							"value" => $line->fk_product,
-							"name" => $line->label
-						),
-						"TaxCodeRef" => array(
-							"value" => "NON"
-						),
-						"Qty" => $line->qty,
-						"UnitPrice" => $line->subprice,
-					)
-				);
-			}
-				$facturaarray = array(
-					"DocNumber" => $factura->ref,
-					"DueDate" => $db->idate($factura->date_lim_reglement),
-					"Balance" => $factura->total_ttc - $factura->paiement,
-					"Line" =>
-						$lineasarray
-				,
-					"CustomerRef" => array(
-						"value" => "$ClienteId",
-						"name" => "$ClienteName"
-					)
-				);
-
-				$theResourceObj = Invoice::create($facturaarray);
-				$resultingObj = $dataService->Add($theResourceObj);
-				$error = $this->dataService->getLastError();
-			}
-
-			if ($error) {
-				echo "The Status code is: " . $error->getHttpStatusCode() . "\n";
-				echo "The Helper message is: " . $error->getOAuthHelperError() . "\n";
-				echo "The Response message is: " . $error->getResponseBody() . "\n";
-			} else {
-				echo "Created Id={$resultingObj->Id}. Reconstructed response body:\n\n";
-				$xmlBody = XmlObjectSerializer::getPostXmlFromArbitraryEntity($resultingObj, $urlResource);
-				echo $xmlBody . "\n";
-			}
-			$test="['Invoice' => [ 'TxnDate' => '2014-09-19',
-    'domain' => 'QBO',
-    'PrintStatus' => 'NeedToPrint',
-    'SalesTermRef' => [
-      'value' => '3',
-    ],
-    'TotalAmt' => 362.07,
-    'Line' => [
-      0 => [
-        'Description' => 'Rock Fountain',
-        'DetailType' => 'SalesItemLineDetail',
-        'SalesItemLineDetail' => [
-          'TaxCodeRef' => [
-            'value' => 'TAX',
-          ],
-          'Qty' => 1,
-          'UnitPrice' => 275,
-          'ItemRef' => [
-            'name' => 'Rock Fountain',
-            'value' => '5',
-          ],
-        ],
-        'LineNum' => 1,
-        'Amount' => 275.0,
-        'Id' => '1',
-      ],
-      1 => [
-        'Description' => 'Fountain Pump',
-        'DetailType' => 'SalesItemLineDetail',
-        'SalesItemLineDetail' => [
-          'TaxCodeRef' => [
-            'value' => 'TAX',
-          ],
-          'Qty' => 1,
-          'UnitPrice' => 12.75,
-          'ItemRef' => [
-            'name' => 'Pump',
-            'value' => '11',
-          ],
-        ],
-        'LineNum' => 2,
-        'Amount' => 12.75,
-        'Id' => '2',
-      ],
-      2 => [
-        'Description' => 'Concrete for fountain installation',
-        'DetailType' => 'SalesItemLineDetail',
-        'SalesItemLineDetail' => [
-          'TaxCodeRef' => [
-            'value' => 'TAX',
-          ],
-          'Qty' => 5,
-          'UnitPrice' => 9.5,
-          'ItemRef' => [
-            'name' => 'Concrete',
-            'value' => '3',
-          ],
-        ],
-        'LineNum' => 3,
-        'Amount' => 47.5,
-        'Id' => '3',
-      ],
-      3 => [
-        'DetailType' => 'SubTotalLineDetail',
-        'Amount' => 335.25,
-        'SubTotalLineDetail' => [
-        ],
-      ],
-    ],
-    'DueDate' => '2014-10-19',
-    'ApplyTaxAfterDiscount' => false,
-    'DocNumber' => '1037',
-    'sparse' => false,
-    'CustomerMemo' => [
-      'value' => 'Thank you for your business and have a great day!',
-    ],
-    'Deposit' => 0,
-    'Balance' => 362.07,
-    'CustomerRef' => [
-      'name' => 'Sonnenschein Family Store',
-      'value' => '24',
-    ],
-    'TxnTaxDetail' => [
-      'TxnTaxCodeRef' => [
-        'value' => '2',
-      ],
-      'TotalTax' => 26.82,
-      'TaxLine' => [
-        0 => [
-          'DetailType' => 'TaxLineDetail',
-          'Amount' => 26.82,
-          'TaxLineDetail' => [
-            'NetAmountTaxable' => 335.25,
-            'TaxPercent' => 8,
-            'TaxRateRef' => [
-              'value' => '3',
-            ],
-            'PercentBased' => true,
-          ],
-        ],
-      ],
-    ],
-    'SyncToken' => '0',
-    'LinkedTxn' => [
-      0 => [
-        'TxnId' => '100',
-        'TxnType' => 'Estimate',
-      ],
-    ],
-    'BillEmail' => [
-      'Address' => 'Familiystore@intuit.com',
-    ],
-    'ShipAddr' => [
-      'City' => 'Middlefield',
-      'Line1' => '5647 Cypress Hill Ave.',
-      'PostalCode' => '94303',
-      'Lat' => '37.4238562',
-      'Long' => '-122.1141681',
-      'CountrySubDivisionCode' => 'CA',
-      'Id' => '25',
-    ],
-    'EmailStatus' => 'NotSet',
-    'BillAddr' => [
-      'Line4' => 'Middlefield, CA  94303',
-      'Line3' => '5647 Cypress Hill Ave.',
-      'Line2' => 'Sonnenschein Family Store',
-      'Line1' => 'Russ Sonnenschein',
-      'Long' => '-122.1141681',
-      'Lat' => '37.4238562',
-      'Id' => '95',
-    ],
-    'MetaData' => [
-      'CreateTime' => '2014-09-19T13:16:17-07:00',
-      'LastUpdatedTime' => '2014-09-19T13:16:17-07:00',
-    ],
-    'CustomField' => [
-      0 => [
-        'DefinitionId' => '1',
-        'StringValue' => '102',
-        'Type' => 'StringType',
-        'Name' => 'Crew #',
-      ],
-    ],
-    'Id' => '130',
-  ],
-  'time' => '2015-07-24T10:48:27.082-07:00',
-]";
-
-		}
+        Actions::syncCustomers($customers);
+    }
 
 	public function tokenrefresh()
 	{
@@ -451,7 +246,12 @@ class Syncqbooks
 			 */
 			$dataService->updateOAuth2Token($accessToken);
 			;
-			$result = $dataService->Query("select * from Customer where id = '$factura->id'");
+			//solo comentario  aqui factura es societe!!!  para tomarlo en cuenta
+			$idQb=$factura->array_options["options_quickbooks_id"];
+			//traer el customer
+
+
+			$result = $dataService->Query("select * from Customer where id = '$idQb'");
 
 			return $result;
 
@@ -478,6 +278,12 @@ class Syncqbooks
 		 * Update the OAuth2Token of the dataService object
 		 */
 		$dataService->updateOAuth2Token($accessToken);
+		//verifiaccion de datos
+
+		if(!isset($thirdparty->note_public)) $thirdparty->note_public="";
+		if(!isset($thirdparty->email)) $thirdparty->email="";
+		if(!isset($thirdparty->phone)) $thirdparty->phone="";
+		if(!isset($thirdparty->name_alias) || $thirdparty->name_alias =="") $thirdparty->name_alias=$thirdparty->name;
 		$customerObj = Customer::create([
 			"BillAddr" => [
 				"Line1"=>  "$thirdparty->address",
@@ -488,12 +294,12 @@ class Syncqbooks
 			],
 			"Notes" =>  "$thirdparty->note_public",
 			"Title"=>  "",
-			"GivenName"=>  "$thirdparty->name",
+			"GivenName"=>  "",
 			"MiddleName"=>  "",
-			"FamilyName"=>  "",
+			"FamilyName"=>  "", //lastname
 			"Suffix"=>  "",
 			"FullyQualifiedName"=>  "$thirdparty->name",
-			"CompanyName"=>  "$thirdparty->name_alias",
+			"CompanyName"=>  "$thirdparty->name",
 			"DisplayName"=>  "$thirdparty->name",
 			"PrimaryPhone"=>  [
 				"FreeFormNumber"=>  "$thirdparty->phone"
@@ -502,11 +308,39 @@ class Syncqbooks
 				"Address" => "$thirdparty->email"
 			]
 		]);
+
 		$resultingCustomerObj = $dataService->Add($customerObj);
 		return $resultingCustomerObj;
 
 	}
 
+
+	public function UpdateExtrafieldsQuickbooks( $fk_object, $value, $element)
+	{
+
+		global $db;
+
+		$sql = " SELECT * FROM " . MAIN_DB_PREFIX . " ".$element."_extrafields WHERE fk_object = " . $fk_object. " ";
+		$ExisteEXtraiflds = $db->query($sql);
+		if (isset($ExisteEXtraiflds)) {
+			$ExisteEXtraifldscount = $ExisteEXtraiflds->num_rows;
+		} else {
+			$ExisteEXtraifldscount = 0;
+		}
+
+		if ($ExisteEXtraifldscount == 0) {
+			$sql = 'INSERT INTO ".MAIN_DB_PREFIX." ".$element."_extrafields (fk_object, quickbooks_id) VALUES (' . $fk_object . ', ' . $value. '  );  ';
+			$Actualizar = $db->query($sql);
+		} else {
+
+			$sql = "  update " . MAIN_DB_PREFIX . " ".$element."_extrafields set quickbooks_id= " . $value . " where fk_object =" . $fk_object . " ";
+			$Actualizar = $db->query($sql);
+
+		}
+
+
+		$test = 0;
+	}
 	public function GetProduct($fk_product)
 	{
 		global $conf, $db;
@@ -528,9 +362,56 @@ class Syncqbooks
 		 * Update the OAuth2Token of the dataService object
 		 */
 		$dataService->updateOAuth2Token($accessToken);
-		$result = $dataService->Query("select * from Item where Id = '$fk_product'");
+		$result = $dataService->Query("select * from Item where Id = '".$fk_product."'");
+		//$result1 = $dataService->Query("select * from Item where Id = '$fk_product'");
 
 		return $result;
+	}
+
+
+
+	public function GetInvoice($InvoiceQB)
+	{
+		global $conf, $db;
+		$dataService = DataService::Configure(array(
+			'auth_mode' => 'oauth2',
+			'ClientID' => $conf->global->QUICKBOOKS_CLIENTID,
+			'ClientSecret' => $conf->global->QUICKBOOKS_CLIENTSECRET,
+			'RedirectURI' => $conf->global->QUICKBOOKS_OAUTHREDIRECT,
+			'scope' => $conf->global->QUICKBOOKS_OAUTHSCOPE,
+			'baseUrl' => "development"
+		));
+
+		/*
+		 * Retrieve the accessToken value from session variable
+		 */
+		$accessToken = $_SESSION['sessionAccessToken'];
+
+		/*
+		 * Update the OAuth2Token of the dataService object
+		 */
+		$dataService->updateOAuth2Token($accessToken);
+		$result = $dataService->Query("select * from Invoice where id = '".$InvoiceQB."'");
+		//$result1 = $dataService->Query("select * from Item where Id = '$fk_product'");
+
+		return $result;
+	}
+
+
+	public function GetProductDOLIBARR($fk_product)
+	{
+		global $conf, $db;
+		require_once DOL_DOCUMENT_ROOT.'/product/class/product.class.php';
+		$objectP = new Product($db);
+		$extrafields = new ExtraFields($db);
+
+// fetch optionals attributes and labels
+	$extrafields->fetch_name_optionals_label($objectP->table_element);
+
+	if ($fk_product > 0)
+		$result = $objectP->fetch($fk_product );
+
+		return $objectP;
 	}
 
 	//------------------DOLIBARR------------------//
@@ -558,6 +439,8 @@ class Syncqbooks
 	{
 		global $conf, $db;
 		//obtener producto de dolibarr
+		require_once DOL_DOCUMENT_ROOT.'/product/class/product.class.php';
+
 		$producto = new Product($db);
 		$producto->fetch($fk_product);
 		$dataService = $this->configureDataService($conf);
@@ -571,9 +454,15 @@ class Syncqbooks
 		 * Update the OAuth2Token of the dataService object
 		 */
 		$dataService->updateOAuth2Token($accessToken);
+		if($producto->description==""){
+			$descrip=$producto->label;
+		}else{
+			$descrip=$producto->description;
+		}
+
 		$Item = Item::create([
-			"Name" => "1111Office Sudfsfasdfpplies",
-			"Description" => "This is the sales description.",
+			"Name" => $producto->ref,
+			"Description" => $descrip,
 			"Active" => true,
 			"FullyQualifiedName" => "Office Supplies",
 			"Taxable" => true,
@@ -595,22 +484,51 @@ class Syncqbooks
 			],
 			"TrackQtyOnHand" => true,
 			"QtyOnHand"=> 100,
-			"InvStartDate"=> $dateTime
+			//"InvStartDate"=> $dateTime
+			"InvStartDate"=> "2023-02-15"
 		]);
 		$resultingObj = $dataService->Add($Item);
 		$error = $dataService->getLastError();
 		if ($error) {
-			echo "The Status code is: " . $error->getHttpStatusCode() . "\n";
-			echo "The Helper message is: " . $error->getOAuthHelperError() . "\n";
-			echo "The Response message is: " . $error->getResponseBody() . "\n";
+			//echo "The Status code is: " . $error->getHttpStatusCode() . "\n";
+			//echo "The Helper message is: " . $error->getOAuthHelperError() . "\n";
+			//echo "The Response message is: " . $error->getResponseBody() . "\n";
+			setEventMessages("The Status code is: ", $error->getOAuthHelperError() . "\n", 'errors');
+			setEventMessages("The Helper message is: ",  $error->getOAuthHelperError() ,'errors');
+
+			setEventMessages("The Response message is: ", $error->getResponseBody() . "\n", 'errors');
+			//echo '<meta http-equiv=Refresh content="0;url=list.php?leftmenu=product&type=0';
+
 		}
 		else {
-			echo "Created Id={$resultingObj->Id}. Reconstructed response body:\n\n";
+			//echo "Created Id={$resultingObj->Id}. Reconstructed response body:\n\n";
+
 			$xmlBody = XmlObjectSerializer::getPostXmlFromArbitraryEntity($resultingObj, $urlResource);
-			echo $xmlBody . "\n";
+			//echo $xmlBody . "\n";
+			setEventMessages("Created Id=".$resultingObj->Id, "Reconstructed response body:\n\n".$xmlBody, 'warnings');
+			//aqui va lo de  update extrafields
+			$sqlBuscarCLienteEXtra= " SELECT * FROM ".MAIN_DB_PREFIX."product_extrafields where fk_object = ".$fk_product;
+			$resultUpdate = $db->query($sqlBuscarCLienteEXtra);
+			$EXisteEXtrafield=$db->fetch_object($resultUpdate);
+
+				if($EXisteEXtrafield){
+					$sqlUpdate=" UPDATE  ".MAIN_DB_PREFIX."product_extrafields  set quickbooks_id = ".$resultingObj->Id." where fk_object =  ".$fk_product;
+					$resultUpdate = $db->query($sqlUpdate);
+					$db->commit();
+					$db->begin();
+				}else{
+					$InsertExtrafield=" insert into ".MAIN_DB_PREFIX."product_extrafields (fk_object, quickbooks_id ) values (".$fk_product.",".$resultingObj->Id.");";
+					$resultUpdate = $db->query($InsertExtrafield);
+					$db->commit();
+					$db->begin();
+
+				}
+
+
+
 		}
 
-
+		return $resultingObj->Id;
 	}
 
 

@@ -368,10 +368,11 @@ class ActionsQuickbooks
 		if ($is_list) {
 			//crear un array de valores segun $parameters['context'] para poder usar el valor en el switch tanto de el nombre como del mensaje a mostrar pasandole a syncronizeToQuickbooks($mensaje)
 			$contexto = array(
-				'invoicelist' => array('name' => 'Invoice', 'message' => 'Sync invoices to quickbooks?','error'=>'No invoices selected','pregunta'=>'Do you want to syncronize  invoices to quickbooks?'),
-				'productservicelist' => array('name' => 'Product', 'message' => 'Sync  products to quickbooks?','error'=>'No products selected','pregunta'=>'Do you want to syncronize  products to quickbooks?'));
+				'invoicelist' => array('name' => 'Invoice', 'message' => 'Sync to Quickbooks','error'=>'No invoices selected','pregunta'=>'Do you want to syncronize  invoices to Quickbooks?'),
+                'thirdpartylist' => array('name' => 'Thirdparty', 'message' => 'Sync thirdparty','error'=>'No thirdparty selected','pregunta'=>'Do you want to syncronize  thirdparty to Quickbooks?'),
+                'productservicelist' => array('name' => 'Product', 'message' => 'Sync  products to quickbooks?','error'=>'No products selected','pregunta'=>'Do you want to syncronize  products to quickbooks?'));
 
-			if (strpos($parameters['context'], 'invoicelist') !== false || strpos($parameters['context'], 'productservicelist') !== false) {
+			if (strpos($parameters['context'], 'thirdpartylist') !== false || strpos($parameters['context'], 'invoicelist') !== false || strpos($parameters['context'], 'productservicelist') !== false) {
 				//create button syncronize to quickbooks
 				//$synctitle = $langs->trans("Syncronize to Quickbooks");
 				//$synctitle segun el contexto corresponda con strpos($parameters['context'], 'invoicelist') o strpos($parameters['context'], 'productservicelist')
@@ -382,6 +383,9 @@ class ActionsQuickbooks
 				} elseif(strpos($parameters['context'], 'productservicelist') !== false) {
 					$mensaje = $contexto['productservicelist']['message'];
 					$pregunta = $contexto['productservicelist']['pregunta'];
+				} elseif(strpos($parameters['context'], 'thirdpartylist') !== false) {
+					$mensaje = $contexto['thirdpartylist']['message'];
+					$pregunta = $contexto['thirdpartylist']['pregunta'];
 				}
 
 				$error = "";
@@ -391,9 +395,13 @@ class ActionsQuickbooks
 				} elseif(strpos($parameters['context'], 'productservicelist') !== false) {
 					$error = $contexto['productservicelist']['error'];
 					$pregunta=$contexto['productservicelist']['pregunta'];
+				} elseif(strpos($parameters['context'], 'thirdpartylist') !== false) {
+					$error = $contexto['thirdpartylist']['error'];
+					$pregunta=$contexto['thirdpartylist']['pregunta'];
 				}
 				$synctitle=$langs->trans($mensaje);
 
+				$test=0;
 				$boton = '<button class="butAction" type="button" id="button_sync" onclick="syncronizeToQuickbooks()">' . $synctitle . '</button>';
 				?>
 				<script type="text/javascript" language="javascript">
@@ -409,16 +417,24 @@ class ActionsQuickbooks
 
 					});
 
+
 					function syncronizeToQuickbooks() {
-<?php   //verificar la version de dolibarr es mayor que la 15
-			if (version_compare(DOL_VERSION, '15.0.0', '>='))
-			{
-			}
- ?>
+						<?php   //verificar la version de dolibarr es mayor que la 15
+									if (version_compare(DOL_VERSION, '15.0.0', '>='))
+									{
+									}
+						 ?>
 						var $form = $('form[name=searchFormList]');
 						if ($form.length==0){
 							$form = $('form[name=formulaire]');
 						}
+                        <?php
+                        if($GLOBALS["object"]->element == 'societe'){
+                          ?>
+                            $form = $('form[id=searchFormList]');
+
+                        <?php
+                        } ?>
 
 						//find all checked checkboxes checkforselect and get their values
 						var $checked = $form.find('input.checkforselect:checked');
@@ -431,15 +447,34 @@ class ActionsQuickbooks
 							$.jnotify('<?php echo $langs->trans($error) ?> ', 'error', true);
 							return false;
 						}
+					<?php
+						if($GLOBALS["object"]->element == 'facture'){
+						?>	var url = "<?php echo dol_buildpath('/quickbooks/script/syncronize.php?action=syncronize&token='.newToken(), 1) ?>";
+						<?php
+						}elseif($GLOBALS["object"]->element == 'product'){
+						?>
+							var url = "<?php echo dol_buildpath('/quickbooks/script/syncronize.php?action=syncronizeproduct&token='.newToken(), 1) ?>";
 
-						var url = "<?php echo dol_buildpath('/quickbooks/script/syncronize.php?action=syncronize&token='.newToken(), 1) ?>";
+						<?php
+						}elseif($GLOBALS["object"]->element == 'societe'){
+						?>
+							var url = "<?php echo dol_buildpath('/quickbooks/script/syncronize.php?action=syncronizesociete&token='.newToken(), 1) ?>";
 
+						<?php
+						}
+						$test=0;
+
+						?>
+
+
+						//ver si aqui podemos checar el element
 						function syncquickbook() {
 							$('<div title="Syncronize to Quickbooks"><p><?php echo $pregunta;  ?></p></div>').dialog({
 								modal: true,
 								buttons: {
 									"Continue": function () {
 										$(this).dialog("close");
+                                        showLoadingSpinner();
 										$.ajax({
 											url: url,
 											type: 'POST',
@@ -451,8 +486,10 @@ class ActionsQuickbooks
 												} else {
 													alert(data.message);
 												}
+                                              window.location.reload();
 											},
 											error: function (e) {
+                                              window.location.reload();
 											}
 										});
 									},
@@ -497,6 +534,28 @@ class ActionsQuickbooks
 						//open a jquery ui modal dialog
 					}
 
+                    function showLoadingSpinner() {
+                      var loadingSpinner = document.createElement('div');
+                      loadingSpinner.setAttribute('id', 'loadingSpinner');
+                      loadingSpinner.style.display = 'block';
+                      loadingSpinner.style.position = 'fixed';
+                      loadingSpinner.style.zIndex = '99';
+                      loadingSpinner.style.height = '100%';
+                      loadingSpinner.style.width = '100%';
+                      loadingSpinner.style.background = 'rgba(255,255,255,0.8)';
+                      loadingSpinner.style.top = '0';
+                      loadingSpinner.style.left = '0';
+
+                      var spinnerText = document.createElement('div');
+                      spinnerText.style.position = 'absolute';
+                      spinnerText.style.top = '50%';
+                      spinnerText.style.left = '50%';
+                      spinnerText.style.transform = 'translate(-50%, -50%)';
+                      spinnerText.innerHTML = '<p>Loading...</p>';
+
+                      loadingSpinner.appendChild(spinnerText);
+                      document.body.appendChild(loadingSpinner);
+                    }
 
 				</script>
 				<?php

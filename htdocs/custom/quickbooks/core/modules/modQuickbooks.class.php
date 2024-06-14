@@ -423,10 +423,10 @@ class modQuickbooks extends DolibarrModules
 		include_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
 		$extrafields = new ExtraFields($this->db);
 		$result1=$extrafields->addExtraField('quickbooks_id', "QuicBooks Id", 'int', 1,  9, 'facture',   0, 0, '', '', 1, '', 1, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');
-		$result2=$extrafields->addExtraField('quickbooks_id', "Quickbooks id", 'int', 1, 9, 'thirdparty',      0, 0, '', '', 1, '', 0, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');
-		$result2=$extrafields->addExtraField('quickbooks_id', "Quickbooks id", 'int', 1, 9, 'product',      0, 0, '', '', 1, '', 0, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');
-		$result2=$extrafields->addExtraField('quickbooks_id', "Quickbooks id", 'int', 1, 9, 'thirdparty',      0, 0, '', '', 1, '', 0, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');
-		$result2=$extrafields->addExtraField('quickbooks_id', "Quickbooks id", 'int', 1, 9, 'bank_account',      0, 0, '', '', 1, '', 0, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');
+		$result2=$extrafields->addExtraField('quickbooks_id', "Quickbooks id", 'int', 1, 9, 'thirdparty',      0, 0, '', '', 1, '', 1, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');
+		$result2=$extrafields->addExtraField('quickbooks_id', "Quickbooks id", 'int', 1, 9, 'product',      0, 0, '', '', 1, '', 1, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');
+		$result2=$extrafields->addExtraField('quickbooks_id', "Quickbooks id", 'int', 1, 9, 'thirdparty',      0, 0, '', '', 1, '', 1, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');
+		$result2=$extrafields->addExtraField('quickbooks_id', "Quickbooks id", 'int', 1, 9, 'bank_account',      0, 0, '', '', 1, '', 1, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');
 		//$result3=$extrafields->addExtraField('quickbooks_myattr3', "New Attr 3 label", 'varchar', 1, 10, 'bank_account', 0, 0, '', '', 1, '', 0, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');
 		//$result4=$extrafields->addExtraField('quickbooks_myattr4', "New Attr 4 label", 'select',  1,  3, 'thirdparty',   0, 1, '', array('options'=>array('code1'=>'Val1','code2'=>'Val2','code3'=>'Val3')), 1,'', 0, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');
 		//$result5=$extrafields->addExtraField('quickbooks_myattr5', "New Attr 5 label", 'text',    1, 10, 'user',         0, 0, '', '', 1, '', 0, 0, '', '', 'quickbooks@quickbooks', '$conf->quickbooks->enabled');

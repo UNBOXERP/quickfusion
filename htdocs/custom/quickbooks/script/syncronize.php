@@ -249,8 +249,18 @@ switch ($action) {
 			$facture->fetch_thirdparty();
 			$facturas[] = $facture;
 		}
-		if (!empty($facturas)) $sync->CreaFacturasQbooks($facturas);
-		break;
+		if(1==1){
+			if (!empty($facturas)) $sync->CreaFacturasQbooks($facturas);
+
+		}
+	break;
+    case 'syncronizesociete':
+        require_once DOL_DOCUMENT_ROOT . '/custom/quickbooks/class/sync.php';
+        $sync = new Syncqbooks();
+        $customers = $_POST['ids'];
+        if (!empty($customers)) $sync->CreaThirdparty($customers);
+    break;
+
 	case 'syncronizepurchase':
 		require_once DOL_DOCUMENT_ROOT . '/custom/quickbooks/class/sync.php';
 		$sync = new Syncqbooks();
@@ -260,6 +270,7 @@ switch ($action) {
 			$facture = new FactureFournisseur($db);
 			$facture->fetch($id);
 			$facture->fetch_thirdparty();
+
 			$facturas[] = $facture;
 		}
 		if (!empty($facturas)) $sync->CreaFacturasQbooks($facturas);
@@ -277,6 +288,7 @@ switch ($action) {
 		}
 		if (!empty($facturas)) $sync->CreaFacturasQbooks($facturas);
 		break;
+
 	case 'syncronizeorder':
 		require_once DOL_DOCUMENT_ROOT . '/custom/quickbooks/class/sync.php';
 		$sync = new Syncqbooks();
@@ -331,8 +343,42 @@ switch ($action) {
 		break;
 	case 'syncronizeproduct':
 		require_once DOL_DOCUMENT_ROOT . '/custom/quickbooks/class/sync.php';
-		$sync = new Syncqbooks();
-		$sync->UpdateProducts();
+
+		//aquihay q meter array de productos
+		$ids = GETPOST('ids');
+		if($ids){
+			$numProd=count($ids);
+			for($a=0;$a<$numProd;$a++){
+					$idActual=$ids[$a];
+				$sync = new Syncqbooks();
+				//$sync->UpdateProducts(); //razmi
+				$resultProduct=$sync->CreaProductoQbooks($idActual); //alan
+			}
+		}
+		//refrescar pantalla
+		$test=0;
+		//echo '<meta http-equiv=Refresh content="0;url=card.php?id='. $object->id. '" ';
+		//echo '<meta http-equiv=Refresh content="0;url=list.php?leftmenu=product&type=0';
+		//$sync = new Syncqbooks();
+		//$sync->UpdateProducts(); //razmi
+
+		//$sync->CreaProductoQbooks(); //alan
+		$resultado = json_encode(array('result' => 'ok'));
+
+		// Envía la respuesta JSON
+				header('Content-Type: application/json');
+				echo $resultado;
+  ?>
+		<script>
+			// Redirecciona utilizando JavaScript después de enviar la respuesta JSON
+			window.location.href = 'list.php?leftmenu=product&type=0';
+
+		</script>
+
+
+<?php
+		exit();
+	$test=0;
 		break;
 	case 'syncronizecustomer':
 		require_once DOL_DOCUMENT_ROOT . '/custom/quickbooks/class/sync.php';
@@ -367,4 +413,6 @@ switch ($action) {
 
 
 }
-return json_encode(array('result' => 'ok'));
+// Envía la respuesta JSON
+//$resultado = json_encode(array('result' => 'ok'));
+
