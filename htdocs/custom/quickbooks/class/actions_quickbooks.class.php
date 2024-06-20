@@ -431,12 +431,14 @@ class ActionsQuickbooks
                         <?php
                         if($GLOBALS["object"]->element == 'societe'){
                           ?>
-                            $form = $('form[name=formfilter]');
+                            $form = $('form[id=searchFormList]');
 
                         <?php
                         } ?>
+
 						//find all checked checkboxes checkforselect and get their values
 						var $checked = $form.find('input.checkforselect:checked');
+
 						var $ids = $checked.map(function () {
 							return $(this).attr('value');
 						}).get();
@@ -445,7 +447,7 @@ class ActionsQuickbooks
 							$.jnotify('<?php echo $langs->trans($error) ?> ', 'error', true);
 							return false;
 						}
-						<?php
+					<?php
 						if($GLOBALS["object"]->element == 'facture'){
 						?>	var url = "<?php echo dol_buildpath('/quickbooks/script/syncronize.php?action=syncronize&token='.newToken(), 1) ?>";
 						<?php
